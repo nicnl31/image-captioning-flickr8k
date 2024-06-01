@@ -20,7 +20,7 @@ The following steps are preformed to prepare the data for training:
 - For transfer learning: I use stratified random sampling to sample 40% of the dataset for faster training and model selection.
 
 ## Model selection
-The `NASNetA-Large` is chosen to be the encoder component of the architecture. For the decoder, the `LSTM` and the `GRU` take turns to be tested, and the best decoder is chosen based on the architecture's performance in the validation loss.
+The `NASNetA-Large` is chosen to be the encoder component of the architecture. [1] For the decoder, the `LSTM` [2], [3] and the `GRU` [3] take turns to be tested, and the best decoder is chosen based on the architecture's performance in the validation loss.
 
 The following are fixed hyperparameters:
 - Embedding dimension: 256
@@ -43,18 +43,35 @@ The following are chosen during transfer learning:
 
 # Results
 
-GRU with 1 layer is the winning component during transfer learning. 
+For the RNN component, the GRU with 1 layer is winning during transfer learning. Therefore, the `NASNetA-Large+GRU` is chosen for fine-tuning.
 
 The `NASNetA-Large+GRU` achieves a train loss of `2.4760`, validation loss of `3.1421` in transfer learning, using 40% of the dataset. 
 
-In fine-tuning, using the complete dataset, it achieves a train loss of `2.320` and validation loss of `2.8997`, which is a modest improvement. The out-of-sample BLEU-1 to BLEU-4 metrics are `0.5065 0.3253 0.2015 0.1298`. This is a fairly impressive result given that the models are trained without advanced features, such as attention. 
+In fine-tuning, using the complete dataset, it achieves a train loss of `2.320` and validation loss of `2.8997`, which is a modest improvement and not much overfitting. 
+
+The out-of-sample BLEU-1 to BLEU-4 metrics are `0.5065 0.3253 0.2015 0.1298`. This is a fairly impressive result given that the models are trained without any advanced features, such as attention. 
 
 ![pred1](https://github.com/nicnl31/image-captioning-flickr8k/assets/86213993/256bddbf-a452-46a5-8c6e-d693dc42cc7d)
 
 ## The good
 - The captions are generated in a fairly human-natural tone when considered by themselves, which suggests that the model learned human speech well.
+- A good generalisation capability is observed since there is not much overfitting. This can be seen in the narrow space between training and validation losses.
 - The model recognises dogs and different types of humans (boy/girl, woman/man) fairly well in most situations. This is possibly due to NASNet's original ImageNet dataset that it was trained on.
 
 ## The rooms for improvement
-- The characteristics of each object are still wrong in most instances, e.g. shirt/pants colour, surroundings, actions.
+- The characteristics of each object are still wrong in some instances, e.g. garment colours, surroundings, objects' actions.
 - Some captions are found to be stuck in a loop, e.g. "a man in a black shirt and a woman in a black shirt and a woman in a black shirt and a woman in a black shirt and..."
+
+# Future work
+
+- Advanced language models: experiment with more advanced language models for the decoder, such as transformer architectures (BERT, GPT).
+- Attention mechanism: Implementing attention mechanisms can allow the model to focus on specific parts of the image when generating each word in the caption.
+- Fine-tuning: Experiment with different fine-tuning strategies for pre-trained models on the specific dataset, such as unfreezing more layers or adjusting learning rates for different parts of the network.
+- Data augmentation: Use augmentation techniques to increase the diversity of the training data and reduce overfitting, like random cropping, flipping, blurring, changing colour hues, etc.
+
+# References
+[1] Barret Zoph, V. K. Vasudevan, J. Shlens, and Q. V. Le, “Learning Transferable Architectures for Scalable Image Recognition,” arXiv (Cornell University), Jul. 2017, doi: https://doi.org/10.48550/arxiv.1707.07012
+
+[2] Staudemeyer, Ralf C and E. R. Morris, “Understanding LSTM -- a tutorial into Long Short-Term Memory Recurrent Neural Networks,” arXiv (Cornell University), Sep. 2019, doi: https://doi.org/10.48550/arxiv.1909.09586
+
+[3] J. Chung, C. Gulcehre, K. Cho, and Y. Bengio, “Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling,” arXiv.org, Dec. 11, 2014. doi: https://doi.org/10.48550/arXiv.1412.3555. Available: http://arxiv.org/abs/1412.3555
