@@ -51,6 +51,7 @@ In fine-tuning, using the complete dataset, it achieves a train loss of `2.320` 
 
 The out-of-sample BLEU-1 to BLEU-4 metrics are `0.5065 0.3253 0.2015 0.1298`. This is a fairly impressive result given that the models are trained without any advanced features, such as attention. 
 
+The figure below shows some random out-of-sample images and the model's predicted captions for each.
 ![pred1](https://github.com/nicnl31/image-captioning-flickr8k/assets/86213993/256bddbf-a452-46a5-8c6e-d693dc42cc7d)
 
 ## The good
