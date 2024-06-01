@@ -62,9 +62,15 @@ The figure below shows some random out-of-sample images and the model's predicte
 ## The rooms for improvement
 - The characteristics of each object are still wrong in some instances, e.g. garment colours, surroundings, objects' actions.
 - Some captions are found to be stuck in a loop, e.g. "a man in a black shirt and a woman in a black shirt and a woman in a black shirt and a woman in a black shirt and..."
+- The predicted captions are only ever as good as their training data - garbage in, garbage out. In this dataset, the expert annotations are showing fairly poor ratings for the "ground truth" captions, where the median ratings for 3 raters are `1.44`, `1.62` and `1.88` out of `4.0`, and there are four levels possible:
+    - `1`: The caption does not describe the image at all
+    - `2`: The caption describes minor aspects of the image, but does not describe the image
+    - `3`: The caption almost describes the image with minor mistakes
+    - `4`: The caption describes the image
 
 # Future work
 
+- Improve the training data: only with higher quality training data can the models really make any meaningful improvements in their predictions.
 - Advanced language models: experiment with more advanced language models for the decoder, such as transformer architectures (BERT, GPT).
 - Attention mechanism: Implementing attention mechanisms can allow the model to focus on specific parts of the image when generating each word in the caption.
 - Fine-tuning: Experiment with different fine-tuning strategies for pre-trained models on the specific dataset, such as unfreezing more layers or adjusting learning rates for different parts of the network.
