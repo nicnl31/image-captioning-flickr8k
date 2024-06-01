@@ -47,4 +47,14 @@ GRU with 1 layer is the winning component during transfer learning.
 
 The `NASNetA-Large+GRU` achieves a train loss of `2.4760`, validation loss of `3.1421` in transfer learning, using 40% of the dataset. 
 
-In fine-tuning, using the complete dataset, it achieves a train loss of `2.320` and validation loss of `2.8997`, which is a modest improvement. The BLEU-1 to BLEU-4 metrics are `0.5065 0.3253 0.2015 0.1298`
+In fine-tuning, using the complete dataset, it achieves a train loss of `2.320` and validation loss of `2.8997`, which is a modest improvement. The out-of-sample BLEU-1 to BLEU-4 metrics are `0.5065 0.3253 0.2015 0.1298`. This is a fairly impressive result given that the models are trained without advanced features, such as attention. 
+
+![pred1](https://github.com/nicnl31/image-captioning-flickr8k/assets/86213993/256bddbf-a452-46a5-8c6e-d693dc42cc7d)
+
+## The good
+- The captions are generated in a fairly human-natural tone when considered by themselves, which suggests that the model learned human speech well.
+- The model recognises dogs and different types of humans (boy/girl, woman/man) fairly well in most situations. This is possibly due to NASNet's original ImageNet dataset that it was trained on.
+
+## The rooms for improvement
+- The characteristics of each object are still wrong in most instances, e.g. shirt/pants colour, surroundings, actions.
+- Some captions are found to be stuck in a loop, e.g. "a man in a black shirt and a woman in a black shirt and a woman in a black shirt and a woman in a black shirt and..."
