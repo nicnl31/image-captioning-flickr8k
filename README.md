@@ -1,6 +1,6 @@
 # Image captioning with the Flickr8k Dataset
 
-This project attempts to train an encoder-decoder architecture to predict captions for images using the Flickr8k dataset. The original dataset is not uploaded due to size, but there are many versions available on the Internet. For example, one can be found on Kaggle: https://www.kaggle.com/datasets/nunenuh/flickr8k
+This project attempts to train an encoder-decoder architecture to predict captions for images using the Flickr8k dataset. [5] The original dataset is not uploaded due to size, but there are many versions available on the Internet. For example, one can be found on Kaggle: https://www.kaggle.com/datasets/nunenuh/flickr8k
 
 # The Flickr8k Dataset
 
@@ -85,3 +85,5 @@ The figure below shows some random out-of-sample images and the model's predicte
 
 [4] K. Papineni, S. Roukos, T. Ward, and W.-J. Zhu, “BLEU: a Method for Automatic Evaluation of Machine Translation,” Proceedings of the 40th Annual Meeting on
 Association for Computational Linguistics - ACL ’02, https://doi.org/10.3115/1073083.1073135. https://dl.acm.org/citation.cfm?id=1073135
+
+[5] M. Hodosh, P. Young, and J. Hockenmaier, “Framing Image Description as a Ranking Task: Data, Models and Evaluation Metrics,” Journal of Artificial Intelligence Research, vol. 47, pp. 853–899, Aug. 2013, doi: https://doi.org/10.1613/jair.3994.
