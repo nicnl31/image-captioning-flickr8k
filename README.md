@@ -39,7 +39,7 @@ The following are chosen during transfer learning:
 
 ## Evaluation parameters
 - Loss function: Cross Entropy Loss as the objective function to minimise during the train-validation loop.
-- Quantitative assessment of captions: the BLEU-n score, a popular metric for automatic machine translation evaluation [1], provides a simple and non-costly method to quantitatively assess the out-of-sample performance of the architecture. The idea of BLEU is to assess the similarity of the predictions and the ground truth in terms of the number of contiguous n-grams correctly seen in the predictions, compared to the ground truth. Four versions of the BLEU-n score, for each $n \in \{1, 2, 3, 4\}$, are used.
+- Quantitative assessment of captions: the BLEU-n score, a popular metric for automatic machine translation evaluation [4], provides a simple and non-costly method to quantitatively assess the out-of-sample performance of the architecture. The idea of BLEU is to assess the similarity of the predictions and the ground truth in terms of the number of contiguous n-grams correctly seen in the predictions, compared to the ground truth. Four versions of the BLEU-n score, for each $n \in \{1, 2, 3, 4\}$, are used.
 
 # Results
 
@@ -75,3 +75,6 @@ The out-of-sample BLEU-1 to BLEU-4 metrics are `0.5065 0.3253 0.2015 0.1298`. Th
 [2] Staudemeyer, Ralf C and E. R. Morris, “Understanding LSTM -- a tutorial into Long Short-Term Memory Recurrent Neural Networks,” arXiv (Cornell University), Sep. 2019, doi: https://doi.org/10.48550/arxiv.1909.09586
 
 [3] J. Chung, C. Gulcehre, K. Cho, and Y. Bengio, “Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling,” arXiv.org, Dec. 11, 2014. doi: https://doi.org/10.48550/arXiv.1412.3555. Available: http://arxiv.org/abs/1412.3555
+
+[4] K. Papineni, S. Roukos, T. Ward, and W.-J. Zhu, “BLEU: a Method for Automatic Evaluation of Machine Translation,” Proceedings of the 40th Annual Meeting on
+Association for Computational Linguistics - ACL ’02, https://doi.org/10.3115/1073083.1073135. https://dl.acm.org/citation.cfm?id=1073135
