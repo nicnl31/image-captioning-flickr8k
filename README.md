@@ -13,7 +13,26 @@ The dataset comprises 8000 images of various dimensions. The metadata folder of 
 
 # Preparation
 
+## Training preparation
 The following steps are preformed to prepare the data for training:
 - Resize all images to standardised `224x224x3`.
 - A `Vocabulary` object is created, which represents the "dictionary" for a model. It is essentially a two-way bijective mapping between the set of individual tokens that make up the whole corpus and the set of corresponding indices. This corpus also includes special tokens for training and evaluation purposes, which are the beginning-of-sentence `<BEG>`, end-of-sentence `<END>`, padding `<PAD>`, and null `<UNK>`.
+
+## Model selection
+The `NASNetA-Large` is chosen to be the encoder component of the architecture. For the decoder, the `LSTM` and the `GRU` take turns to be tested, and the best decoder is chosen based on the architecture's performance in the validation loss.
+
+The following are fixed hyperparameters:
+- Embedding dimension: 256
+- Hidden size dimension: 256
+
+The following are chosen during transfer learning:
+- Decoder: {`LSTM`, `GRU`}
+- Number of layers: {1, 2}
+
+## Training parameters
+- Batch size: 128
+- Total epochs: 300, with early stopping if validation loss does not improve for 10 epochs.
+- Learning rate: `1e-4`, with decay rate `1e-1` if validation loss does not improve. Decay until the learning rate hits `1e-6`.
+- Optimizer: `Adam`
+- Loss function: Cross Entropy Loss
 - 
